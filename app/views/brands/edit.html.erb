@@ -1,0 +1,15 @@
+<div class="page-header">
+	<h3 class="pull-left">编辑设备品牌</h3>
+  <div class="btn-group pull-right">
+	  <%= link_to brands_path, :class => 'btn btn-default' do %>
+	    <span class="glyphicon glyphicon-list-alt"></span>
+	    返回
+	  <% end %>
+	</div>
+</div>
+
+<%= render 'form' %>
+
+<script>
+  $('#brand_link').addClass('active').siblings().removeClass('active');
+</script>

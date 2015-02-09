@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial: 1
+  dept1st: MyString
+  dept2nd: MyString
+  dept3rd: MyString
+  type_id: 1
+  brand_id: 1
+  model: MyString
+  commissioning: 2015-02-04
+  asset_number: MyString
+  value: 1
+  fund_source: MyString
+  factory_number: MyString
+  production_date: 2015-02-04
+  department_id: 1
+  user: MyString
+  user_phone: MyString
+  location: MyString
+  ip: MyString
+  mac: MyString
+  os: MyString
+  note: MyString
+
+two:
+  serial: 1
+  dept1st: MyString
+  dept2nd: MyString
+  dept3rd: MyString
+  type_id: 1
+  brand_id: 1
+  model: MyString
+  commissioning: 2015-02-04
+  asset_number: MyString
+  value: 1
+  fund_source: MyString
+  factory_number: MyString
+  production_date: 2015-02-04
+  department_id: 1
+  user: MyString
+  user_phone: MyString
+  location: MyString
+  ip: MyString
+  mac: MyString
+  os: MyString
+  note: MyString

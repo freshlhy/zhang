@@ -1,0 +1,124 @@
+<div class="page-header">
+  <h3 class="pull-left">设备信息</h3>
+  <div class="btn-group pull-right">
+  <%= link_to devices_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    返回
+  <% end %>
+  <%= link_to new_maintenance_path(:device_id => @device.id), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    添加运维记录
+  <% end %>
+  <%= link_to edit_device_path(@device), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    编辑
+  <% end %>
+</div></div>
+
+<div class="device-info row">
+  <dl class="dl-horizontal col-sm-6">
+
+    <dt>一级单位:</dt>
+    <dd><%= @device.dept1st %></dd>
+
+    <dt>二级单位:</dt>
+    <dd><%= @device.dept2nd %></dd>
+
+    <dt>三级单位:</dt>
+    <dd><%= @device.dept3rd %></dd>
+
+    <dt>设备类型:</dt>
+    <dd><%= @device.type.name %></dd>
+
+    <dt>品牌:</dt>
+    <dd><%= @device.brand.name %></dd>
+
+    <dt>型号:</dt>
+    <dd><%= @device.model %></dd>
+
+    <dt>投运日期:</dt>
+    <dd><%= @device.commissioning %></dd>
+
+    <dt>固定资产号:</dt>
+    <dd><%= @device.asset_number %></dd>
+
+    <dt>资产原值（元）:</dt>
+    <dd><%= @device.value %></dd>
+
+    <dt>资金来源:</dt>
+    <dd><%= @device.fund_source %></dd>
+  </dl>
+<dl class="dl-horizontal col-sm-6">
+    <dt>出厂编号:</dt>
+    <dd><%= @device.factory_number %></dd>
+
+    <dt>生产日期:</dt>
+    <dd><%= @device.production_date %></dd>
+
+    <dt>使用部门:</dt>
+    <dd><%= @device.department.name %></dd>
+
+    <dt>使用人:</dt>
+    <dd><%= @device.user %></dd>
+
+    <dt>使用人联系方式:</dt>
+    <dd><%= @device.user_phone %></dd>
+
+    <dt>设备存放地点:</dt>
+    <dd><%= @device.location %></dd>
+
+    <dt>IP地址:</dt>
+    <dd><%= @device.ip %></dd>
+
+    <dt>MAC地址:</dt>
+    <dd><%= @device.mac %></dd>
+
+    <dt>操作系统版本:</dt>
+    <dd><%= @device.os %></dd>
+
+    <dt>备注:</dt>
+    <dd><%= @device.note %></dd>
+
+  </dl>
+<div class="row">
+  <div class="col-sm-12">
+    <h4>设备运维信息</h4>
+    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <thead> 
+        <tr>
+          <th>设备类型</th>
+          <th>使用部门</th>
+          <th>使用人</th>
+          <th>地点</th>
+          <th>维护时间</th>
+          <th>维护人员</th>
+          <th>事项</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @device.maintenances.size > 0 %>
+          <%= content_tag_for(:tr, @device.maintenances) do |maintenance| %>
+            <td><%= @device.type.name %></td>
+            <td><%= @device.department.name %></td>
+            <td><%= @device.user %></td>
+            <td><%= @device.location %></td>
+            <td><%= maintenance.mdate %></td>
+            <td><%= maintenance.maintenancer_names %></td>
+            <td><%= maintenance.location %></td>
+            <td><%= link_to '编辑', edit_maintenance_path(maintenance) %></td>
+            <td><%= link_to '删除', maintenance, method: :delete, data: { confirm: '你确定要删除?' } %></td>
+          <% end %>
+        <% else %>
+          <td>无运维记录</td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
+<script>
+  $('#device_link').addClass('active').siblings().removeClass('active');
+</script>

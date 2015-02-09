@@ -1,0 +1,23 @@
+"zh-CN":
+  helpers:
+    submit:
+      device:
+        create: "保存"
+        update: "更新"
+      brand:
+        create: "保存"
+        update: "更新"
+      department:
+        create: "保存"
+        update: "更新"
+      maintenance:
+        create: "保存"
+        update: "更新"
+      maintenancer:
+        create: "保存"
+        update: "更新"
+      type:
+        create: "保存"
+        update: "更新"
+  
+

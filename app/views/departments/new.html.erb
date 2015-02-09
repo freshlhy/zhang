@@ -1,0 +1,15 @@
+<div class="page-header">
+	<h3 class="pull-left">添加部门</h3>
+  <div class="btn-group pull-right">
+	  <%= link_to departments_path, :class => 'btn btn-default' do %>
+	    <span class="glyphicon glyphicon-list-alt"></span>
+	    Back
+	  <% end %>
+	</div>
+</div>
+
+<%= render 'form' %>
+
+<script>
+  $('#department_link').addClass('active').siblings().removeClass('active');
+</script>

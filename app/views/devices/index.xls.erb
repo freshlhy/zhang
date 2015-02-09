@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">序号</Data></Cell>
+        <Cell><Data ss:Type="String">一级单位</Data></Cell>
+        <Cell><Data ss:Type="String">二级单位</Data></Cell>
+        <Cell><Data ss:Type="String">三级单位</Data></Cell>
+        <Cell><Data ss:Type="String">设备类型</Data></Cell>
+        <Cell><Data ss:Type="String">品牌</Data></Cell>
+        <Cell><Data ss:Type="String">型号</Data></Cell>
+        <Cell><Data ss:Type="String">投运日期</Data></Cell>
+        <Cell><Data ss:Type="String">固定资产号</Data></Cell>
+        <Cell><Data ss:Type="String">资产原值（元）</Data></Cell>
+        <Cell><Data ss:Type="String">资金来源</Data></Cell>
+        <Cell><Data ss:Type="String">出厂编号</Data></Cell>
+        <Cell><Data ss:Type="String">生产日期</Data></Cell>
+        <Cell><Data ss:Type="String">使用部门</Data></Cell>
+        <Cell><Data ss:Type="String">使用人</Data></Cell>
+        <Cell><Data ss:Type="String">使用人联系方式</Data></Cell>
+        <Cell><Data ss:Type="String">设备存放地点</Data></Cell>
+        <Cell><Data ss:Type="String">IP地址</Data></Cell>
+        <Cell><Data ss:Type="String">MAC地址</Data></Cell>
+        <Cell><Data ss:Type="String">操作系统版本</Data></Cell>
+        <Cell><Data ss:Type="String">备注</Data></Cell>
+      </Row>
+    <% @devices.each do |device| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= device.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.dept1st %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.dept2nd %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.dept3rd %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.type.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.brand.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.model %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.commissioning %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.asset_number %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= device.value %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.fund_source %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.factory_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.production_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.department.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.user %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= device.user_phone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.location %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.ip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.mac %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.os %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= device.note %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -1,0 +1,14 @@
+<div class="page-header">
+  <h3 class="pull-left">添加运维人员</h3>
+  <div class="btn-group pull-right">
+  <%= link_to maintenancers_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    返回
+  <% end %>
+</div></div>
+
+<%= render 'form' %>
+
+<script>
+  $('#maintenancer_link').addClass('active').siblings().removeClass('active');
+</script>

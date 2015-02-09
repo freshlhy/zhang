@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h3 class="pull-left">品牌</h3>
+  <div class="btn-group pull-right">
+    <%= link_to brands_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      返回
+    <% end %>
+    <%= link_to edit_brand_path(@brand), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+      编辑
+    <% end %>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>名称:</dt>
+  <dd><%= @brand.name %></dd>
+</dl>
+
+
+<script>
+  $('#brand_link').addClass('active').siblings().removeClass('active');
+</script>
