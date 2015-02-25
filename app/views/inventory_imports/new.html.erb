@@ -1,18 +1,18 @@
 <div class="page-header">
-  <h3 class="pull-left">导入设备</h3>
+  <h3 class="pull-left">导入库存</h3>
   <div class="btn-group pull-right">
-  <%= link_to devices_path, :class => 'btn btn-default' do %>
+  <%= link_to inventories_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     返回
   <% end %>
 </div></div>
 
-<%= form_for(@device_import, :html => { :class => "form-horizontal", :role => "form" }) do |f| %>
-  <% if @device_import.errors.any? %>
+<%= form_for(@inventory_import, :html => { :class => "form-horizontal", :role => "form" }) do |f| %>
+  <% if @inventory_import.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@device_import.errors.count, "error") %> prohibited this import from completing:</h2>
+      <h2><%= pluralize(@inventory_import.errors.count, "error") %> prohibited this import from completing:</h2>
       <ul>
-      <% @device_import.errors.full_messages.each do |msg| %>
+      <% @inventory_import.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -38,4 +38,3 @@
   </div>
 </div>
 <% end %>
-

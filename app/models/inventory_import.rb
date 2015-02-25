@@ -1,4 +1,4 @@
-class DeviceImport
+class InventoryImport
   # switch to ActiveModel::Model in Rails 4
   extend ActiveModel::Model
   include ActiveModel::Naming
@@ -16,16 +16,16 @@ class DeviceImport
   end
 
   def save
-    if imported_devices.map(&:valid?).all?
-      imported_devices.each(&:save!)
+    if imported_inventories.map(&:valid?).all?
+      imported_inventories.each(&:save!)
 
       connection = ActiveRecord::Base.connection
-      connection.execute("SELECT setval('devices_id_seq', (SELECT MAX(id) FROM devices))") 
+      connection.execute("SELECT setval('inventories_id_seq', (SELECT MAX(id) FROM inventories))") 
       
       true
     else
-      imported_devices.each_with_index do |device, index|
-        device.errors.full_messages.each do |message|
+      imported_inventories.each_with_index do |inventory, index|
+        inventory.errors.full_messages.each do |message|
           errors.add :base, "表格第#{index+2}行: #{message}"
         end
       end
@@ -33,13 +33,13 @@ class DeviceImport
     end
   end
 
-  def imported_devices
-    @imported_devices ||= load_imported_devices
+  def imported_inventories
+    @imported_inventories ||= load_imported_inventories
   end
 
-  def load_imported_devices
+  def load_imported_inventories
     spreadsheet = open_spreadsheet
-    header = ['id', 'dept1st', 'dept2nd', 'dept3rd', 'type_id', 'brand_id', 'model', 'commissioning', 'asset_number', 'value', 'fund_source', 'factory_number', 'production_date', 'department_id', 'user', 'user_phone', 'location', 'ip', 'mac', 'os', 'note']
+    header = ['id', 'type_id', 'brand_id', 'model', 'asset_number', 'value', 'fund_source', 'factory_number', 'production_date', 'note']
     (2..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       
@@ -63,19 +63,9 @@ class DeviceImport
         end
       end
 
-      department_name_raw = row["department_id"]
-      if department_name_raw
-        department_name = "#{department_name_raw}"
-        department_name.strip!
-        if department_name.size > 0
-          department = Department.find_or_create_by!(name: department_name)
-          row["department_id"] = department.id
-        end
-      end
-
-      device = Device.find_by_id(row["id"]) || Device.new
-      device.attributes = row.to_hash.slice(*row.to_hash.keys)
-      device
+      inventory = Inventory.find_by_id(row["id"]) || Inventory.new
+      inventory.attributes = row.to_hash.slice(*row.to_hash.keys)
+      inventory
     end
   end
 
@@ -94,7 +84,7 @@ class DeviceImport
   end
 
   def name
-    "DeviceImport"
+    "InventoryImport"
   end
 
 end

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">序号</Data></Cell>
+        <Cell><Data ss:Type="String">设备类型</Data></Cell>
+        <Cell><Data ss:Type="String">品牌</Data></Cell>
+        <Cell><Data ss:Type="String">型号</Data></Cell>
+        <Cell><Data ss:Type="String">固定资产号</Data></Cell>
+        <Cell><Data ss:Type="String">资产原值（元）</Data></Cell>
+        <Cell><Data ss:Type="String">资金来源</Data></Cell>
+        <Cell><Data ss:Type="String">出厂编号</Data></Cell>
+        <Cell><Data ss:Type="String">生产日期</Data></Cell>
+        <Cell><Data ss:Type="String">备注</Data></Cell>
+      </Row>
+    <% @inventories.each do |inventory| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= inventory.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.type.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.brand.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.model %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.asset_number %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= inventory.value %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.fund_source %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.factory_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.production_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory.note %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

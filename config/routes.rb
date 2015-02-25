@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   resources :devices
 
+  resources :inventory_imports
+
+  resources :inventories
+
+  get 'inventories/:id/delivery' => 'inventories#delivery', as: :delivery_inventory
+
   resources :maintenancers
 
   resources :maintenances

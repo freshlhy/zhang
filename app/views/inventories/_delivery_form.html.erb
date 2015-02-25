@@ -1,0 +1,154 @@
+<%= form_for(@device, :html => { :class => "form-horizontal", :role => "form" }) do |f| %>
+  <% if @device.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h4>
+
+      <ul>
+      <% @device.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <input type="hidden" value=<%= @inventory_id %> name="inventory_id" id="inventory_id">
+
+  <div class="form-group">
+    <%= f.label "一级单位", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :dept1st, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "二级单位", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :dept2nd, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "三级单位", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :dept3rd, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "设备类型", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <div class="chosen">
+        <select data-placeholder="..." class="chosen-select" name="device[type_id]" tabindex="30">
+          <%= options_from_collection_for_select(Type.all, 'id', 'name') %>
+        </select> 
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "品牌", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+        <select data-placeholder="..." class="chosen-select" name="device[brand_id]" tabindex="30">
+          <%= options_from_collection_for_select(Brand.all, 'id', 'name') %>
+        </select> 
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "型号", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :model, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "投运日期", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="commissioning"
+                     value="<%= @device.commissioning %>" name="commissioning" style="cursor:pointer;">
+              
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "固定资产号", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :asset_number, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "资产原值（元）", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :value, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "资金来源", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :fund_source, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "出厂编号", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :factory_number, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "生产日期", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+       <input class="form-control" type="text" id="production_date"
+                     value="<%= @device.production_date %>" name="production_date" style="cursor:pointer;">
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "使用部门", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <select data-placeholder="..." class="chosen-select" name="device[department_id]" tabindex="30">
+          <%= options_from_collection_for_select(Department.all, 'id', 'name') %>
+      </select> 
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "使用人", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :user, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "使用人联系方式", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :user_phone, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "设备存放地点", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :location, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "IP地址", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :ip, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "MAC地址", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :mac, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "操作系统版本", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :os, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "备注", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :note, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">;
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

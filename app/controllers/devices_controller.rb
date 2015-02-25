@@ -33,6 +33,10 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
+        if params[:inventory_id] and Inventory.find_by_id(params[:inventory_id])
+          @inventory = Inventory.find_by_id(params[:inventory_id])
+          @inventory.destroy
+        end
         format.html { redirect_to @device, notice: 'Device was successfully created.' }
         format.json { render :show, status: :created, location: @device }
       else

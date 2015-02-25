@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h3 class="pull-left">库存设备信息</h3>
+  <div class="btn-group pull-right">
+  <%= link_to inventories_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    返回
+  <% end %>
+  <%= link_to delivery_inventory_path(@inventory), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    出库
+  <% end %>
+  <%= link_to edit_inventory_path(@inventory), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    编辑
+  <% end %>
+</div></div>
+
+<div class="inventory-info row">
+  <dl class="dl-horizontal">
+
+    <dt>设备类型:</dt>
+    <dd><%= @inventory.type.name %></dd>
+
+    <dt>品牌:</dt>
+    <dd><%= @inventory.brand.name %></dd>
+
+    <dt>型号:</dt>
+    <dd><%= @inventory.model %></dd>
+
+    <dt>固定资产号:</dt>
+    <dd><%= @inventory.asset_number %></dd>
+
+    <dt>资产原值（元）:</dt>
+    <dd><%= @inventory.value %></dd>
+
+    <dt>资金来源:</dt>
+    <dd><%= @inventory.fund_source %></dd>
+
+    <dt>出厂编号:</dt>
+    <dd><%= @inventory.factory_number %></dd>
+
+    <dt>生产日期:</dt>
+    <dd><%= @inventory.production_date %></dd>
+
+    <dt>备注:</dt>
+    <dd><%= @inventory.note %></dd>
+
+  </dl>
+</div>
+
+<script>
+  $('#inventory_link').addClass('active').siblings().removeClass('active');
+</script>
