@@ -59,7 +59,7 @@
     <%= f.label "投运日期", :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <input class="form-control" type="text" id="commissioning"
-                     value="<%= @device.commissioning %>" name="commissioning" style="cursor:pointer;">
+                     value="<%= @device.commissioning %>" name="device[commissioning]" style="cursor:pointer;">
               
     </div>
   </div>
@@ -91,7 +91,7 @@
     <%= f.label "生产日期", :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
        <input class="form-control" type="text" id="production_date"
-                     value="<%= @device.production_date %>" name="production_date" style="cursor:pointer;">
+                     value="<%= @device.production_date %>" name="device[production_date]" style="cursor:pointer;">
     </div>
   </div>
   <div class="form-group">

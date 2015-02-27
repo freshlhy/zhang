@@ -61,5 +61,5 @@ $ ->
       }
     }
     #首次打开默认以第六列排序
-    "aaSorting": [[ 2, "desc" ]]
+    "aaSorting": [[ 0, "desc" ]]
 
